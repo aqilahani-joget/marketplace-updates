@@ -112,17 +112,17 @@ public class MarketplaceUpdatesPlugin extends UiHtmlInjectorPluginAbstract imple
         
 
         if (jarFiles == null || jarFiles.length == 0) {
-            LogUtil.info(getClassName(), "No JARs found in " + pluginDir.getAbsolutePath());
+            //LogUtil.info(getClassName(), "No JARs found in " + pluginDir.getAbsolutePath());
             return localPlugins;
         }
 
-        LogUtil.info(getClassName(), "===== Extracted Versions from JAR Files =====");
+        //LogUtil.info(getClassName(), "===== Extracted Versions from JAR Files =====");
 
         for (File jar : jarFiles) {
             Map<String, Object> jarFileInfoMap = extractPluginInfoFromJar(jar);
             String version = jarFileInfoMap.get("version").toString();
             String id = jarFileInfoMap.get("id").toString(); 
-            LogUtil.info(getClassName(), "Plugin " + id + " is version " + version);
+            //LogUtil.info(getClassName(), "Plugin " + id + " is version " + version);
             localPlugins.add(jarFileInfoMap);
         }
         return localPlugins;
@@ -251,7 +251,7 @@ public class MarketplaceUpdatesPlugin extends UiHtmlInjectorPluginAbstract imple
             marketplaceMap.put(baseName, plugin);
         }
 
-        LogUtil.info(getClassName(), "===== Compare Local to Marketplace Versions =====");
+        //LogUtil.info(getClassName(), "===== Compare Local to Marketplace Versions =====");
 
         // Compare versions
         for (Map<String, Object> local : localPlugins) {
@@ -264,8 +264,7 @@ public class MarketplaceUpdatesPlugin extends UiHtmlInjectorPluginAbstract imple
                 String remoteVersion = matchedPlugin.optString("version", "Unknown");
                 int cmp = compareVersions(localVersion, remoteVersion);
                 if (cmp < 0) {
-                    LogUtil.info(getClassName(), "Plugin " + id + " has newer version available: "
-                            + localVersion + " -> " + remoteVersion);
+                    //LogUtil.info(getClassName(), "Plugin " + id + " has newer version available: " + localVersion + " -> " + remoteVersion);
                     
                     Map<String, Object> matchedPluginsMap = new HashMap<>();
                     matchedPluginsMap.put("id", id);
@@ -276,7 +275,7 @@ public class MarketplaceUpdatesPlugin extends UiHtmlInjectorPluginAbstract imple
                     matchedPluginsMap.put("latestVersion", remoteVersion.replaceAll("[^0-9.]", ""));
                     matchedList.add(matchedPluginsMap);
                 } else {
-                    LogUtil.info(getClassName(), "Plugin " + id + " is up-to-date (" + localVersion + ")");
+                    //LogUtil.info(getClassName(), "Plugin " + id + " is up-to-date (" + localVersion + ")");
                 }
             }
         }

@@ -2,7 +2,7 @@
     <div id="main-body-content-filter">
     </div>
 
-    <div id="pluginList4"></div>
+    <table id="pluginList4"></table>
 </div>
 
 
@@ -45,7 +45,7 @@
             { key: 'latestVersion', label: 'Latest Version', sortable: false, width: 140 },
         ];
         JsonDataTable4.checkbox = true;
-        JsonDataTable4.buttons = [];
+        JsonDataTable4.buttons = null;
         JsonDataTable4.init();
 
 })();
